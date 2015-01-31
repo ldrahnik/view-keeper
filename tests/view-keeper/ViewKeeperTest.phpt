@@ -21,6 +21,8 @@ class ViewKeeperTest extends Tester\TestCase
 	/** @var /Container */
 	private $container;
 
+	private $name = "ViewKeeperRest";
+
 	public function __construct($container)
 	{
 		$this->container = $container;
@@ -38,8 +40,17 @@ class ViewKeeperTest extends Tester\TestCase
 
 	function testGetView()
 	{
-		$name = 'FooAdd';
-		Assert::match($this->keeper->getControlView($name), 'test/controls/' . $name . '/default.latte');
+		Assert::match($this->keeper->getView($this->name, 'controls'), 'test/controls/' . $this->name . '/default.latte');
+	}
+
+	function testGetViewMagic()
+	{
+		Assert::match($this->keeper->getControlView($this->name), 'test/controls/' . $this->name . '/default.latte');
+
+		Assert::match($this->keeper->getControlView($this->name, 'test'), 'test/controls/' . $this->name . '/test.latte');
+
+		Assert::match($this->keeper->getControlView($this->name, 'test', 'foo'), 'test/controls/' . $this->name . '/test.foo');
+		Assert::match($this->keeper->getControlView($this->name, 'test', '.foo'), 'test/controls/' . $this->name . '/test.foo');
 	}
 }
 
