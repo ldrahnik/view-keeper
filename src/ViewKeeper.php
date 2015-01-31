@@ -50,10 +50,13 @@ class ViewKeeper
 	}
 
 	/**
+	 * Return $path from mask with forwarded values.
+	 *
 	 * @param $name
 	 * @param $category
 	 * @param string $view
 	 * @param string $suffix
+	 *
 	 * @return string
 	 */
 	public function getViewByCategory($name, $category, $view = 'default', $suffix = 'latte') {
