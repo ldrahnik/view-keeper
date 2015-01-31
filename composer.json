@@ -1,6 +1,6 @@
 {
     "name": "ldrahnik/view-keeper",
-    "description": "Keeper of the views.",
+    "description": "Keeper of app views.",
     "homepage": "https://github.com/ldrahnik/view-keeper",
     "license": ["BSD-3-Clause"],
     "type": "library",
