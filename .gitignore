@@ -1,0 +1,7 @@
+.idea/*
+tests/view-keeper/output/*
+tests/view-keeper/temp/*
+tests/temp/*
+vendor/*
+composer.lock
+coverage.dat

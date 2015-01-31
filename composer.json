@@ -1,0 +1,33 @@
+{
+    "name": "ldrahnik/view-keeper",
+    "description": "Keeper of the views.",
+    "homepage": "https://github.com/ldrahnik/view-keeper",
+    "license": ["BSD-3-Clause"],
+    "type": "library",
+    "authors": [
+        {
+            "name": "Lukáš Drahník",
+            "email": "l.drahnik@gmail.com"
+        }
+    ],
+    "support": {
+        "email": "l.drahnik@gmail.com",
+        "issues": "https://github.com/ldrahnik/view-keeper/issues"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">= 5.4",
+        "nette/nette": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ViewKeeper\\": "src/"
+        },
+        "classmap": [
+            "src/exceptions.php"
+        ]
+    },
+    "require-dev": {
+        "nette/tester": "~1.3@dev"
+    }
+}
