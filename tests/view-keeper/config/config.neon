@@ -1,0 +1,8 @@
+parameters:
+    themeDir: test
+
+extensions:
+	keeper: ViewKeeper\DI\ViewKeeperHelperExtension
+
+keeper:
+	controls: %themeDir%/controls
