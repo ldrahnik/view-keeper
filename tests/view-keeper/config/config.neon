@@ -6,3 +6,4 @@ extensions:
 
 keeper:
 	controls: %themeDir%/<category>/<name>/<view>
+	presenters: %themeDir%/<category>/<name>/<view>
