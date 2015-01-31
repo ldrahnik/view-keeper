@@ -32,18 +32,15 @@ class ViewKeeper
 	 * @param string $view
 	 * @param string $suffix
 	 *
-	 * @throw InvalidViewName
+	 * @throw InvalidParameter
 	 * @throw ViewCategoryNotFound
 	 * @return string
 	 */
 	public function getView($name, $category, $view = 'default', $suffix = 'latte') {
-		if ($category === '') {
-			throw new ViewCategoryNotFound("Category '{$name}' not found.");
-		}
 
-		if ($name === '') {
-			throw new InvalidViewName("Invalid view name '{$name}'.");
-		}
+		if ($category === '') throw new ViewCategoryNotFound("Category '{$name}' not found.");
+		if ($name === '') throw new InvalidParameter("Invalid parameter name '{$name}'.");
+		if ($suffix === '')	throw new InvalidParameter("Invalid parameter name '{$suffix}'.");
 
 		if(isset($this->categories[$category])) {
 			return $this->getViewByCategory($name, $category, $view, $suffix);

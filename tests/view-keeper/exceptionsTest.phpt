@@ -38,11 +38,11 @@ class exceptionsTest extends Tester\TestCase
 		}, 'ViewKeeper\ViewCategoryNotFound');
 	}
 
-	function testInvalidViewName()
+	function testInvalidParameter()
 	{
 		Assert::exception(function() {
 			$this->keeper->getView('', 'bar');
-		}, 'ViewKeeper\InvalidViewName');
+		}, 'ViewKeeper\InvalidParameter');
 	}
 }
 

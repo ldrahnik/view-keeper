@@ -23,7 +23,7 @@ class ViewCategoryNotFound extends \LogicException
 /**
  * Author Lukáš Drahník <L.Drahnik@gmail.com>
  */
-class InvalidViewName extends \LogicException
+class InvalidParameter extends \LogicException
 {
 
 }
