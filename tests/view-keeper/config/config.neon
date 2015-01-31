@@ -5,4 +5,4 @@ extensions:
 	keeper: ViewKeeper\DI\ViewKeeperHelperExtension
 
 keeper:
-	controls: %themeDir%/controls
+	controls: %themeDir%/<category>/<name>/<view>

@@ -52,6 +52,11 @@ class ViewKeeperTest extends Tester\TestCase
 		Assert::match($this->keeper->getControlView($this->name, 'test', 'foo'), 'test/controls/' . $this->name . '/test.foo');
 		Assert::match($this->keeper->getControlView($this->name, 'test', '.foo'), 'test/controls/' . $this->name . '/test.foo');
 	}
+
+	function testGetViewMask()
+	{
+		Assert::match($this->keeper->getView($this->name, 'controls'), 'test/controls/' . $this->name . '/default.latte');
+	}
 }
 
 $test = new ViewKeeperTest($container);

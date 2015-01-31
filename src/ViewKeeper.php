@@ -29,14 +29,14 @@ class ViewKeeper
 	 *
 	 * @param $name
 	 * @param $category
-	 * @param string $file
+	 * @param string $view
 	 * @param string $suffix
 	 *
 	 * @throw InvalidViewName
 	 * @throw ViewCategoryNotFound
 	 * @return string
 	 */
-	public function getView($name, $category, $file = 'default', $suffix = 'latte') {
+	public function getView($name, $category, $view = 'default', $suffix = 'latte') {
 		if ($category === '') {
 			throw new ViewCategoryNotFound("Category '{$name}' not found.");
 		}
@@ -46,7 +46,7 @@ class ViewKeeper
 		}
 
 		if(isset($this->categories[$category])) {
-			return $this->getViewByCategory($name, $category, $file, $suffix);
+			return $this->getViewByCategory($name, $category, $view, $suffix);
 		}
 
 		throw new ViewCategoryNotFound("Category '{$name}' not found.");
@@ -55,12 +55,23 @@ class ViewKeeper
 	/**
 	 * @param $name
 	 * @param $category
-	 * @param string $file
+	 * @param string $view
 	 * @param string $suffix
 	 * @return string
 	 */
-	public function getViewByCategory($name, $category, $file = 'default', $suffix = 'latte') {
-		return $this->categories[$category] . '/' . $name . '/' . $file . '.' . $suffix;
+	public function getViewByCategory($name, $category, $view = 'default', $suffix = 'latte') {
+		return $this->parseViewMask($this->categories[$category], $name, $category, $view) . '.' . $suffix;
+	}
+	
+	public function parseViewMask($mask, $name, $category, $view)
+	{
+		$patterns = array(
+			'<name>' => $name,
+			'<category>' => $category,
+			'<view>' => $view
+		);
+		$path = str_replace(array_keys($patterns), array_values($patterns), $mask);
+		return $path;
 	}
 
 	/**
