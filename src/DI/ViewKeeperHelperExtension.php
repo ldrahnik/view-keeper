@@ -14,16 +14,9 @@ use Nette\DI\CompilerExtension;
 class ViewKeeperHelperExtension extends CompilerExtension
 {
 
-	/**
-	 * Embedded default configuration.
-	 */
-	private $defaults = array(
-		'controls' => '%appDir%/templates/controls'
-	);
-
 	public function loadConfiguration()
 	{
-		$config = $this->getConfig($this->defaults);
+		$config = $this->getConfig();
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('ViewKeeper'))
