@@ -55,7 +55,7 @@ class ViewKeeper
 	}
 
 	/**
-	 * Return $path from mask with forwarded values.
+	 * Return template $path from mask with forwarded values.
 	 *
 	 * @param $name
 	 * @param $category
@@ -68,7 +68,17 @@ class ViewKeeper
 	{
 		return $this->parseViewMask($this->categories[$category], $name, $category, $view) . '.' . $suffix;
 	}
-	
+
+	/**
+	 * Return template $path from mask with forwarded values.
+	 *
+	 * @param $mask
+	 * @param $name
+	 * @param $category
+	 * @param $view
+	 *
+	 * @return string
+	 */
 	private function parseViewMask($mask, $name, $category, $view)
 	{
 		$patterns = array(
