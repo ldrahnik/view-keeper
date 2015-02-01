@@ -8,7 +8,5 @@ keeper:
 	controls: %themeDir%/<category>/<name>/<view>
 	presenters: %themeDir%/<category>/<name>/<view>
 	layouts: %themeDir%/@<view>
-
 	caseInseNsitiveS: %themeDir%/<category>/<name>/<view>
-
 	presenterWithModule: %themeDir%/<module>Module/presenters/<name>/<view>

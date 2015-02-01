@@ -66,7 +66,6 @@ class ViewKeeperTest extends Tester\TestCase
 		Assert::match($this->keeper->getView(':Test', 'presenterWithModule'), 'test/Module/presenters/Test/default.latte');
 		Assert::match($this->keeper->getView('Ahoj:', 'presenterWithModule'), 'test/AhojModule/presenters//default.latte');
 	}
-
 }
 
 $test = new ViewKeeperTest($container);
