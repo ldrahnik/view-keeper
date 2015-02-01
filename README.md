@@ -29,7 +29,7 @@ Register extension in config file
 
 ```sh
 parameters:
-    themeDir: %appDir%/templates
+	themeDir: %appDir%/templates
 
 extensions:
 	keeper: ViewKeeper\DI\ViewKeeperHelperExtension
@@ -43,33 +43,34 @@ keeper:
 Example of usage, view-keeper is immune to crash in ajax request (no parameters in render method)
 
 ```php
-	/** @var \ViewKeeper\ViewKeeper 
-	  * @inject 
-	  */
+	/**
+	* @var \ViewKeeper\ViewKeeper 
+	* @inject 
+	*/
 	private $keeper;
 	
-    	public function __construct(ViewKeeper\ViewKeeper $keeper)
-    	{
-			$this->keeper = $keeper;
-    	}
+	public function __construct(ViewKeeper\ViewKeeper $keeper)
+    {
+		$this->keeper = $keeper;
+    }
     
-    	// components
-    	public function render()
-    	{
-			$this->template->setFile($this->keeper->getView($this->name, 'controls'));
-			$this->template->render();
-    	}
+    // components
+    public function render()
+    {
+		$this->template->setFile($this->keeper->getView($this->name, 'controls'));
+		$this->template->render();
+    }
     	
-    	// presenters
-    	public function formatLayoutTemplateFiles()
-		{
-			return array($this->keeper->getView($this->name, 'layouts', 'layout'));
-		}
+    // presenters
+    public function formatLayoutTemplateFiles()
+	{
+		return array($this->keeper->getView($this->name, 'layouts', 'layout'));
+	}
 
-		public function formatTemplateFiles()
-		{
-			return array($this->keeper->getView($this->name, 'presenters', $this->action));
-		}
+	public function formatTemplateFiles()
+	{
+		return array($this->keeper->getView($this->name, 'presenters', $this->action));
+	}
 ```
 
 Or you can use get view via magic
