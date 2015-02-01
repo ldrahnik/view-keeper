@@ -41,21 +41,16 @@ class ViewKeeperTest extends Tester\TestCase
 	function testGetView()
 	{
 		Assert::match($this->keeper->getView($this->name, 'controls'), 'test/controls/' . $this->name . '/default.latte');
+		Assert::match($this->keeper->getView($this->name, 'presenters'), 'test/presenters/' . $this->name . '/default.latte');
+		Assert::match($this->keeper->getView($this->name, 'layouts', 'layout'), 'test/' . '@layout.latte');
 	}
 
 	function testGetViewMagic()
 	{
 		Assert::match($this->keeper->getControlView($this->name), 'test/controls/' . $this->name . '/default.latte');
-
 		Assert::match($this->keeper->getControlView($this->name, 'test'), 'test/controls/' . $this->name . '/test.latte');
-
 		Assert::match($this->keeper->getControlView($this->name, 'test', 'foo'), 'test/controls/' . $this->name . '/test.foo');
 		Assert::match($this->keeper->getControlView($this->name, 'test', '.foo'), 'test/controls/' . $this->name . '/test.foo');
-	}
-
-	function testGetViewMask()
-	{
-		Assert::match($this->keeper->getView($this->name, 'controls'), 'test/controls/' . $this->name . '/default.latte');
 	}
 }
 
