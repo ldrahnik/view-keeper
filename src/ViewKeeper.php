@@ -59,11 +59,11 @@ class ViewKeeper
 	 *
 	 * @return string
 	 */
-	public function getViewByCategory($name, $category, $view = 'default', $suffix = 'latte') {
+	private function getViewByCategory($name, $category, $view = 'default', $suffix = 'latte') {
 		return $this->parseViewMask($this->categories[$category], $name, $category, $view) . '.' . $suffix;
 	}
 	
-	public function parseViewMask($mask, $name, $category, $view)
+	private function parseViewMask($mask, $name, $category, $view)
 	{
 		$patterns = array(
 			'<name>' => $name,
