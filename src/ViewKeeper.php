@@ -2,6 +2,8 @@
 
 namespace ViewKeeper;
 
+use ViewKeeper\Utils\Strings;
+
 /**
  * View Keeper.
  *
@@ -70,12 +72,35 @@ class ViewKeeper
 	private function parseViewMask($mask, $name, $category, $view)
 	{
 		$patterns = array(
-			'<name>' => $name,
+			'<module>' => $this->getModuleName($name),
+			'<name>' => $this->getPresenterName($name),
 			'<category>' => $category,
 			'<view>' => $view
 		);
-		$path = str_replace(array_keys($patterns), array_values($patterns), $mask);
-		return $path;
+
+		return str_replace(array_keys($patterns), array_values($patterns), $mask);
+	}
+
+	/**
+	 * Separate Presenter from Module
+	 *
+	 * @param $name
+	 * @return string <module> or NULL
+	 */
+	private function getPresenterName($name)
+	{
+		return Strings::strafter($name, ':');
+	}
+
+	/**
+	 * Separate Module from Presenter
+	 *
+	 * @param $name
+	 * @return string <module> or NULL
+	 */
+	private function getModuleName($name)
+	{
+		return Strings::strbefore($name, ':');
 	}
 
 	/**

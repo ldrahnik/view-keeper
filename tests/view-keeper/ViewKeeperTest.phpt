@@ -22,6 +22,7 @@ class ViewKeeperTest extends Tester\TestCase
 	private $container;
 
 	private $name = "ViewKeeperRest";
+	private $nameWithModule = "Backend:Homepage";
 
 	public function __construct($container)
 	{
@@ -58,6 +59,14 @@ class ViewKeeperTest extends Tester\TestCase
 		Assert::match($this->keeper->getView($this->name, 'CaseInSensitives'), 'test/caseinsensitives/' . $this->name . '/default.latte');
 		Assert::match($this->keeper->getCaseInSensitiveView($this->name), 'test/caseinsensitives/' . $this->name . '/default.latte');
 	}
+
+	function testModule()
+	{
+		Assert::match($this->keeper->getView($this->nameWithModule, 'presenterWithModule'), 'test/BackendModule/presenters/Homepage/default.latte');
+		Assert::match($this->keeper->getView(':Test', 'presenterWithModule'), 'test/Module/presenters/Test/default.latte');
+		Assert::match($this->keeper->getView('Ahoj:', 'presenterWithModule'), 'test/AhojModule/presenters//default.latte');
+	}
+
 }
 
 $test = new ViewKeeperTest($container);

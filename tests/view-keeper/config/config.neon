@@ -10,3 +10,5 @@ keeper:
 	layouts: %themeDir%/@<view>
 
 	caseInseNsitiveS: %themeDir%/<category>/<name>/<view>
+
+	presenterWithModule: %themeDir%/<module>Module/presenters/<name>/<view>
