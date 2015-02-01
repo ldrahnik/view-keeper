@@ -29,32 +29,64 @@ Register extension in config file
 
 ```sh
 parameters:
-    templatesDir: test
+    themeDir: %appDir%/templates
 
 extensions:
 	keeper: ViewKeeper\DI\ViewKeeperHelperExtension
 
 keeper:
-	controls: %templatesDir%/controls
+	controls: %themeDir%/<category>/<name>/<view>
+	presenters: %themeDir%/<category>/<name>/<view>
+	layouts: %themeDir%/@<view>
 ```
 
-Now you can use templates path through services
+Example of usage, view-keeper is immune to crash in ajax request (no parameters in render method)
 
 ```php
-	/** @var \ViewKeeper\ViewKeeper @inject */
+	/** @var \ViewKeeper\ViewKeeper 
+	  * @inject 
+	  */
 	private $keeper;
-
-    public function __construct(ViewKeeper\ViewKeeper $keeper)
-    {
-    	$this->keeper = $keeper;
-    }
+	
+    	public function __construct(ViewKeeper\ViewKeeper $keeper)
+    	{
+			$this->keeper = $keeper;
+    	}
     
-    public function render()
-	  {
-		  $this->template->setFile($this->keeper->getView($this->name, 'controls'));
-		  //equivalent $this->template->setFile($this->keeper->getControlView($this->name);
-		  //'Control' will find 'controls' in config
-		  
-		  $this->template->render();
-	  }
+    	// components
+    	public function render()
+    	{
+			$this->template->setFile($this->keeper->getView($this->name, 'controls'));
+			$this->template->render();
+    	}
+    	
+    	// presenters
+    	public function formatLayoutTemplateFiles()
+		{
+			return array($this->keeper->getView($this->name, 'layouts', 'layout'));
+		}
+
+		public function formatTemplateFiles()
+		{
+			return array($this->keeper->getView($this->name, 'presenters', $this->action));
+		}
 ```
+
+Or you can use get view via magic
+
+```php
+	$this->keeper->getControlView($this->name);
+	//will find category in config which is plural of 'Control' & case insensivite => 'controls'
+```
+
+Is able to set up path via these patterns
+
+```sh
+	<name>			# <Base>Presenter, <UserAdd>
+	<category> 		# <controls>: ...
+	<view> 			# <default>.latte
+	
+	# suffix is not configurable, always will be in the end over dot
+```
+
+View-keeper is easy way to separate template files from logic, you ll love it :)
