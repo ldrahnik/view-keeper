@@ -46,7 +46,7 @@ class ViewKeeper
 			return $this->getViewByCategory($name, $category, $view, $suffix);
 		}
 
-		throw new ViewCategoryNotFound("Category '{$name}' not found.");
+		throw new ViewCategoryNotFound("Category '{$category}' not found.");
 	}
 
 	/**
