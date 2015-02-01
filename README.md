@@ -83,7 +83,10 @@ Or you can use get view via magic
 Is able to set up path via these patterns
 
 ```sh
-	<name>			# <Base>Presenter, <UserAdd>
+	<module>		# <Backend>Module
+	<name>			# <Backend>Module<:Base>Presenter
+					# <Base>Presenter
+					# <UserAdd>
 	<category> 		# <controls>: ...
 	<view> 			# <default>.latte
 	
