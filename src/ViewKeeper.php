@@ -89,10 +89,24 @@ class ViewKeeper
 			'<module>' => $this->getModuleName($name),
 			'<name>' => $this->getPresenterName($name),
 			'<category>' => $category,
-			'<view>' => $view
+			'<view>' => $this->getViewName($view)
 		);
 
 		return str_replace(array_keys($patterns), array_values($patterns), $mask);
+	}
+
+	/**
+	 * Get View name
+	 *
+	 * @param $name
+	 * @return string <view> or ''
+	 */
+	private function getViewName($name)
+	{
+		if($name == NULL) {
+			return '';
+		}
+		return $name;
 	}
 
 	/**

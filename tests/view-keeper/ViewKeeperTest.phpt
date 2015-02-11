@@ -71,6 +71,11 @@ class ViewKeeperTest extends Tester\TestCase
 	{
 		Assert::match($this->keeper->getView($this->nameWithModule, 'presenterWithModule', 'default', NULL), 'test/BackendModule/presenters/Homepage/default');
 	}
+
+	function testNullAction()
+	{
+		Assert::match($this->keeper->getView($this->nameWithModule, 'presenterWithModule', NULL, NULL), 'test/BackendModule/presenters/Homepage/');
+	}
 }
 
 $test = new ViewKeeperTest($container);
