@@ -15,6 +15,14 @@ interface Exception
 /**
  * Author Lukáš Drahník <L.Drahnik@gmail.com>
  */
+class FileNotFound extends \LogicException
+{
+
+}
+
+/**
+ * Author Lukáš Drahník <L.Drahnik@gmail.com>
+ */
 class ViewCategoryNotFound extends \LogicException
 {
 

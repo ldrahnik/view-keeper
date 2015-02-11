@@ -19,6 +19,11 @@ class ViewKeeper
 	public $categories = array();
 
 	/**
+	 * @var bool
+	 */
+	private $fileCheck = TRUE;
+
+	/**
 	 * @param $categories
 	 */
 	public function __construct($categories)
@@ -62,6 +67,7 @@ class ViewKeeper
 	 * @param string $view
 	 * @param string $suffix
 	 *
+	 * @throw FileNotFound
 	 * @return string
 	 */
 	private function getViewByCategory($name, $category, $view = 'default', $suffix = 'latte')
@@ -69,6 +75,9 @@ class ViewKeeper
 		$path = $this->parseViewMask($this->categories[$category], $name, $category, $view);
 		if($suffix != NULL) {
 			$path = $path . '.' . $suffix;
+		}
+		if($this->fileCheck == TRUE && !file_exists($path)) {
+			throw new FileNotFound("File '{$path}' not found.");
 		}
 		return $path;
 	}
@@ -164,5 +173,32 @@ class ViewKeeper
 		}
 
 		throw MemberAccessException::undefinedMethodCall($this, $name);
+	}
+
+	/**
+	 * Setter of $fileCheck
+	 *
+	 * @param bool $state
+	 *
+	 * @return $this
+	 */
+	public function setFileCheck($state = TRUE)
+	{
+		if($state) {
+			$this->fileCheck = TRUE;
+		} else {
+			$this->fileCheck = FALSE;
+		}
+		return $this;
+	}
+
+	/**
+	 * Getter of $fileCheck
+	 *
+	 * @return bool
+	 */
+	public function getFileCheck()
+	{
+		return $this->fileCheck;
 	}
 }

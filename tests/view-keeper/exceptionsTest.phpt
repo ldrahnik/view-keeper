@@ -29,6 +29,7 @@ class exceptionsTest extends Tester\TestCase
 	protected function setUp()
 	{
 		$this->keeper = $this->container->getService('keeper.ViewKeeper');
+		$this->keeper->setFileCheck(FALSE);
 	}
 
 	function testRegularViewCategoryNotFound()
@@ -43,6 +44,15 @@ class exceptionsTest extends Tester\TestCase
 		Assert::exception(function() {
 			$this->keeper->getView('', 'bar');
 		}, 'ViewKeeper\InvalidParameter');
+	}
+
+
+	function testFileNotExist()
+	{
+		Assert::exception(function() {
+			$this->keeper->setFileCheck()
+						->getView('test', 'presenters');
+		}, 'ViewKeeper\FileNotFound');
 	}
 }
 
