@@ -29,7 +29,6 @@ class exceptionsTest extends Tester\TestCase
 	protected function setUp()
 	{
 		$this->keeper = $this->container->getService('keeper.ViewKeeper');
-		$this->keeper->setFileCheck(FALSE);
 	}
 
 	function testRegularViewCategoryNotFound()

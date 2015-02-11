@@ -21,7 +21,7 @@ class ViewKeeper
 	/**
 	 * @var bool
 	 */
-	private $fileCheck = TRUE;
+	private $fileCheck = FALSE;
 
 	/**
 	 * @param $categories
