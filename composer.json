@@ -28,6 +28,6 @@
         ]
     },
     "require-dev": {
-        "nette/tester": "~1.3@dev"
+        "nette/tester": "~1.3"
     }
 }
