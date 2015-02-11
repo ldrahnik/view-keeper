@@ -113,7 +113,7 @@ class ViewKeeper
 	 * Separate Presenter from Module
 	 *
 	 * @param $name
-	 * @return string <module> or NULL
+	 * @return string <presenter> or ''
 	 */
 	private function getPresenterName($name)
 	{
