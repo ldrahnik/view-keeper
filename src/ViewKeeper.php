@@ -44,7 +44,7 @@ class ViewKeeper
 	{
 		if ($category === '') throw new ViewCategoryNotFound("Category '{$name}' not found.");
 		if ($name === '') throw new InvalidParameter("Invalid parameter name '{$name}'.");
-		if ($suffix === '')	throw new InvalidParameter("Invalid parameter name '{$suffix}'.");
+		if ($suffix === '')	throw new InvalidParameter("Invalid parameter suffix '{$suffix}'.");
 
 		$category = strtolower($category);
 		if(isset($this->categories[$category])) {
