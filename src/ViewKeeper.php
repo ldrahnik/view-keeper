@@ -21,7 +21,12 @@ class ViewKeeper
 	/**
 	 * @var bool
 	 */
-	private $fileCheck = FALSE;
+	private $fileCheck = false;
+
+	/**
+	 * @var bool
+	 */
+	private $lastFileCheck = false;
 
 	/**
 	 * @param $categories
@@ -73,11 +78,14 @@ class ViewKeeper
 	private function getViewByCategory($name, $category, $view = 'default', $suffix = 'latte')
 	{
 		$path = $this->parseViewMask($this->categories[$category], $name, $category, $view);
-		if($suffix != NULL) {
+		if($suffix != null) {
 			$path = $path . '.' . $suffix;
 		}
-		if($this->fileCheck == TRUE && !file_exists($path)) {
+		if($this->fileCheck == true && !file_exists($path)) {
 			throw new FileNotFound("File '{$path}' not found.");
+		}
+		if($this->lastFileCheck == true) {
+			$this->fileCheck = false;
 		}
 		return $path;
 	}
@@ -112,7 +120,7 @@ class ViewKeeper
 	 */
 	private function getViewName($name)
 	{
-		if($name == NULL) {
+		if($name == null) {
 			return '';
 		}
 		return $name;
@@ -182,12 +190,12 @@ class ViewKeeper
 	 *
 	 * @return $this
 	 */
-	public function setFileCheck($state = TRUE)
+	public function setFileCheck($state = true)
 	{
 		if($state) {
-			$this->fileCheck = TRUE;
+			$this->fileCheck = true;
 		} else {
-			$this->fileCheck = FALSE;
+			$this->fileCheck = false;
 		}
 		return $this;
 	}
@@ -200,5 +208,32 @@ class ViewKeeper
 	public function getFileCheck()
 	{
 		return $this->fileCheck;
+	}
+
+	/**
+	 * Setter of $lastFileCheck
+	 *
+	 * @param bool $state
+	 *
+	 * @return $this
+	 */
+	public function setLastFileCheck($state = true)
+	{
+		if($state) {
+			$this->lastFileCheck = true;
+		} else {
+			$this->lastFileCheck = false;
+		}
+		return $this;
+	}
+
+	/**
+	 * Getter of $lastFileCheck
+	 *
+	 * @return bool
+	 */
+	public function getLastFileCheck()
+	{
+		return $this->lastFileCheck;
 	}
 }
