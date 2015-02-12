@@ -220,6 +220,7 @@ class ViewKeeper
 	public function setLastFileCheck($state = true)
 	{
 		if($state) {
+			$this->fileCheck = true;
 			$this->lastFileCheck = true;
 		} else {
 			$this->lastFileCheck = false;
