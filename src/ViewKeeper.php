@@ -196,6 +196,7 @@ class ViewKeeper
 			$this->fileCheck = true;
 		} else {
 			$this->fileCheck = false;
+			$this->lastFileCheck = false;
 		}
 		return $this;
 	}
