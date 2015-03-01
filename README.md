@@ -100,3 +100,7 @@ Is able to set up path via these patterns
 ```
 
 View-keeper is easy way to separate template files from logic, you ll love it :)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ldrahnik/view-keeper/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
