@@ -7,7 +7,9 @@
     "authors": [
         {
             "name": "Lukáš Drahník",
-            "email": "l.drahnik@gmail.com"
+            "email": "l.drahnik@gmail.com",
+            "homepage": "http://drahnik-lukas.com",
+            "role": "Developer"
         }
     ],
     "support": {
