@@ -1,6 +1,6 @@
 <?php
 
-namespace regexp\Tests;
+namespace ViewKeeper\Tests;
 
 use Nette;
 use	Tester;
