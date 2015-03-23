@@ -1,9 +1,11 @@
 <?php
-/**
- * Author Lukáš Drahník <L.Drahnik@gmail.com>
- */
-require __DIR__ . '/../../vendor/autoload.php';
 
+/**
+ * @author Lukáš Drahník (http://drahnik-lukas.com/)
+ * @package ldrahnik\ViewKeeper
+ */
+
+require __DIR__ . '/../../vendor/autoload.php';
 
 if (!class_exists('Tester\Assert')) {
 	echo "Install Nette Tester using `composer update --dev`\n";

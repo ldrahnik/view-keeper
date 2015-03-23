@@ -5,10 +5,10 @@ namespace ViewKeeper;
 use ViewKeeper\Utils\Strings;
 
 /**
- * View Keeper.
+ * Class ViewKeeper
  *
- * Author Lukáš Drahník <L.Drahnik@gmail.com>
- * @package view-keeper
+ * @author Lukáš Drahník (http://drahnik-lukas.com/)
+ * @package ldrahnik\ViewKeeper
  */
 class ViewKeeper
 {

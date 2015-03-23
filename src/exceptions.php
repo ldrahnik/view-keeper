@@ -2,10 +2,11 @@
 
 namespace ViewKeeper;
 
-
 /**
- * Class Exceptions
- * @package view-keeper
+ * Interface Exception
+ *
+ * @author Lukáš Drahník (http://drahnik-lukas.com/)
+ * @package ldrahnik\ViewKeeper
  */
 interface Exception
 {
@@ -13,7 +14,8 @@ interface Exception
 }
 
 /**
- * Author Lukáš Drahník <L.Drahnik@gmail.com>
+ * Class FileNotFound
+ * @package ldrahnik\ViewKeeper
  */
 class FileNotFound extends \LogicException
 {
@@ -21,7 +23,8 @@ class FileNotFound extends \LogicException
 }
 
 /**
- * Author Lukáš Drahník <L.Drahnik@gmail.com>
+ * Class ViewCategoryNotFound
+ * @package ldrahnik\ViewKeeper
  */
 class ViewCategoryNotFound extends \LogicException
 {
@@ -29,20 +32,22 @@ class ViewCategoryNotFound extends \LogicException
 }
 
 /**
- * Author Lukáš Drahník <L.Drahnik@gmail.com>
+ * Class InvalidParameter
+ * @package ldrahnik\ViewKeeper
  */
 class InvalidParameter extends \LogicException
 {
 
 }
-	/**
- * Author Lukáš Drahník <L.Drahnik@gmail.com>
+
+/**
+ * Class MemberAccessException
+ * @package ldrahnik\ViewKeeper
  */
 class MemberAccessException extends \LogicException implements Exception
 {
 	/**
 	 * @param string|object $class
-	 *
 	 * @return MemberAccessException
 	 */
 	public static function callWithoutName($class)
@@ -55,7 +60,6 @@ class MemberAccessException extends \LogicException implements Exception
 	/**
 	 * @param object|string $class
 	 * @param string $method
-	 *
 	 * @return MemberAccessException
 	 */
 	public static function undefinedMethodCall($class, $method)

@@ -4,12 +4,11 @@ namespace ViewKeeper\DI;
 
 use Nette\DI\CompilerExtension;
 
-
 /**
- * View keeper helper extension.
+ * Class ViewKeeperHelperExtension
  *
- * Author Lukáš Drahník <L.Drahnik@gmail.com>
- * @package view-keeper\DI
+ * @author Lukáš Drahník (http://drahnik-lukas.com/)
+ * @package ldrahnik\ViewKeeper\DI
  */
 class ViewKeeperHelperExtension extends CompilerExtension
 {

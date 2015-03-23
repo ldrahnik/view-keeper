@@ -9,7 +9,10 @@ use	Tester\Assert;
 $container = require __DIR__ . '/bootstrap.php';
 
 /**
- * Author Lukáš Drahník <L.Drahnik@gmail.com>
+ * Class exceptionTest
+ *
+ * @author Lukáš Drahník (http://drahnik-lukas.com/)
+ * @package ldrahnik\ViewKeeper\Tests
  *
  * @testCase
  */
