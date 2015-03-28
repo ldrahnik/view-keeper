@@ -47,12 +47,7 @@ class ViewKeeper
 		if ($name === '') throw new InvalidParameter("Invalid parameter name '{$name}'.");
 		if ($suffix === '')	throw new InvalidParameter("Invalid parameter suffix '{$suffix}'.");
 
-		$mask = strtolower($mask);
-		if(isset($this->masks[$mask])) {
-			return $this->getViewByCategory($name, $mask, $view, $suffix);
-		}
-
-		throw new ViewMaskNotFound("Mask '{$mask}' not found.");
+		return $this->parseMask($mask, $name, $view, $suffix);
 	}
 
 	/**
@@ -66,33 +61,25 @@ class ViewKeeper
 	 * @throw FileNotFound
 	 * @return string
 	 */
-	private function getViewByCategory($name, $mask, $view = 'default', $suffix = 'latte')
+	private function parseMask($mask, $name, $view = 'default', $suffix = 'latte')
 	{
-		$path = $this->parseViewMask($this->masks[$mask], $name, $view);
-		if($suffix != null) {
-			$path = $path . '.' . $suffix;
+		$mask = strtolower($mask);
+		if(!isset($this->masks[$mask])) {
+			throw new ViewMaskNotFound("Mask '{$mask}' not found.");
 		}
-		return $path;
-	}
 
-	/**
-	 * Return template $path from mask with forwarded values.
-	 *
-	 * @param $mask
-	 * @param $name
-	 * @param $view
-	 *
-	 * @return string
-	 */
-	private function parseViewMask($mask, $name, $view)
-	{
-		return Parser::replace(
+		$path =  Parser::replace(
 			[
 				'<module>' => Strings::strbefore($name, ':'),
 				'<name>' => Strings::strafter($name, ':', $name),
 				'<view>' => $view
 			],
-			$mask);
+			$this->masks[$mask]);
+
+		if($suffix != null) {
+			$path = $path . '.' . $suffix;
+		}
+		return $path;
 	}
 
 	/**
@@ -115,12 +102,12 @@ class ViewKeeper
 
 			if ($op === 'get' && isset($this->masks[$prop]) & !empty($args)) {
 				if(count($args) == 1) {
-					return $this->getViewByCategory($args[0], $prop);
+					return $this->parseMask($prop, $args[0]);
 				} else if(count($args) == 2) {
-					return $this->getViewByCategory($args[0], $prop, $args[1]);
+					return $this->parseMask($prop, $args[0], $args[1]);
 				} else if(count($args) == 3) {
 					$suffix = str_replace(".", "", $args[2]);
-					return $this->getViewByCategory($args[0], $prop, $args[1], $suffix);
+					return $this->parseMask($prop, $args[0], $args[1], $suffix);
 				}
 			}
 		} else if ($name === '') {
