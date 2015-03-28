@@ -11,11 +11,10 @@ namespace ViewKeeper\Utils;
 class Strings {
 
 	/**
-	 * Take part of $string after $substring.
+	 * Take part of $string after $substring or $string.
 	 *
 	 * @param $string
 	 * @param $substring
-	 *
 	 * @return string
 	 */
 	public static function strafter($string, $substring)
@@ -28,11 +27,10 @@ class Strings {
 	}
 
 	/**
-	 * Take part of $string before $substring.
+	 * Take part of $string before $substring or ''.
 	 *
 	 * @param $string
 	 * @param $substring
-	 *
 	 * @return string
 	 */
 	public static function strbefore($string, $substring)
