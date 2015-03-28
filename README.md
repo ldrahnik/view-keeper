@@ -92,8 +92,13 @@ Is able to set up path via these patterns
 	# suffix is not configurable, always will be in the end over dot
 ```
 
-View-keeper is easy way to separate template files from logic, you ll love it :)
+Benefits
+-------
 
+- View-keeper is easy way to separate template files from logic
+- Change position of files is now easier than ever before
+
+View keeper tries to be ultra-light package and simple to use. You will love it :)
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ldrahnik/view-keeper/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
