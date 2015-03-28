@@ -22,9 +22,7 @@ class ViewKeeper
 	 */
 	public function __construct($masks)
 	{
-		foreach($masks as $id => $value) {
-			$this->masks[strtolower($id)] = $value;
-		}
+		$this->masks = $masks;
 	}
 
 	/**

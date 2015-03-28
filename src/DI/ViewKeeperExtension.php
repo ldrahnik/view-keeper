@@ -3,6 +3,7 @@
 namespace ViewKeeper\DI;
 
 use Nette\DI\CompilerExtension;
+use ViewKeeper\Utils\Arrays;
 
 /**
  * Class ViewKeeperExtension
@@ -20,7 +21,7 @@ class ViewKeeperExtension extends CompilerExtension
 
 		$builder->addDefinition($this->prefix('ViewKeeper'))
 			->setClass('ViewKeeper\ViewKeeper',
-				array($config)
+				array(Arrays::array_strlower($config))
 			);
 	}
 }
