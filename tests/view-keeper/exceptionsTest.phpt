@@ -2,7 +2,6 @@
 
 namespace ViewKeeper\Tests;
 
-use Nette;
 use	Tester;
 use	Tester\Assert;
 

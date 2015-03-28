@@ -3,7 +3,6 @@
 namespace ViewKeeper\Tests\Utils;
 
 use ViewKeeper\Utils\Strings;
-use Nette;
 use	Tester;
 use	Tester\Assert;
 
