@@ -3,7 +3,7 @@
 namespace ViewKeeper\Parser;
 
 /**
- * Class ViewKeeperHelperExtension
+ * Class Parser
  *
  * @author Lukáš Drahník (http://drahnik-lukas.com/)
  * @package ldrahnik\ViewKeeper\Utils

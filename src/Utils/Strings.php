@@ -3,7 +3,7 @@
 namespace ViewKeeper\Utils;
 
 /**
- * Class ViewKeeperHelperExtension
+ * Class Strings
  *
  * @author Lukáš Drahník (http://drahnik-lukas.com/)
  * @package ldrahnik\ViewKeeper\Utils
