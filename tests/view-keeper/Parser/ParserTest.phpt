@@ -26,14 +26,14 @@ class ParserTest extends Tester\TestCase
 			'bar' => 2
 		];
 		$mask = 'foo/bar';
-		Assert::equal('1/2', Parser::replace($patterns, $mask));
+		Assert::equal('1/2', Parser::replace($mask, $patterns));
 
 		$patterns = [
 			'foo' => null,
 			'bar' => null
 		];
 		$mask = 'foo/bar';
-		Assert::equal('/', Parser::replace($patterns, $mask));
+		Assert::equal('/', Parser::replace($mask, $patterns));
 	}
 }
 

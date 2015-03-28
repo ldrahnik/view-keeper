@@ -69,12 +69,13 @@ class ViewKeeper
 		}
 
 		$path =  Parser::replace(
+			$this->masks[$mask],
 			[
 				'<module>' => Strings::strbefore($name, ':'),
 				'<name>' => Strings::strafter($name, ':', $name),
 				'<view>' => $view
-			],
-			$this->masks[$mask]);
+			]
+		);
 
 		if($suffix != null) {
 			$path = $path . '.' . $suffix;

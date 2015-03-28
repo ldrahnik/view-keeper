@@ -13,11 +13,11 @@ class Parser {
 	/**
 	 * Obtain array 'key' => 'value' and string $mask if there are 'key's in $mask method will replace them.
 	 *
-	 * @param $patterns
 	 * @param $mask
+	 * @param $patterns
 	 * @return string
 	 */
-	public static function replace($patterns, $mask)
+	public static function replace($mask, $patterns)
 	{
 		return str_replace(array_keys($patterns), array_values($patterns), $mask);
 	}
