@@ -78,39 +78,4 @@ class ViewKeeper
 		}
 		return $path;
 	}
-
-	/**
-	 * Allows the user to access through magic methods to protected and public properties.
-	 * There is get<view mask name>('name') for every view.
-	 *
-	 * @param string $name method name
-	 * @param array $args arguments
-	 *
-	 * @throws MemberAccessException
-	 * @return string
-	 */
-	public function __call($name, $args)
-	{
-		if (strlen($name) > 3) {
-
-			$op = substr($name, 0, 3);
-			$prop = substr($name, 3);
-			$prop = strtolower(str_replace("View", "", $prop)) . 's';
-
-			if ($op === 'get' && isset($this->masks[$prop]) & !empty($args)) {
-				if(count($args) == 1) {
-					return $this->parseMask($prop, $args[0]);
-				} else if(count($args) == 2) {
-					return $this->parseMask($prop, $args[0], $args[1]);
-				} else if(count($args) == 3) {
-					$suffix = str_replace(".", "", $args[2]);
-					return $this->parseMask($prop, $args[0], $args[1], $suffix);
-				}
-			}
-		} else if ($name === '') {
-			throw MemberAccessException::callWithoutName($this);
-		}
-
-		throw MemberAccessException::undefinedMethodCall($this, $name);
-	}
 }

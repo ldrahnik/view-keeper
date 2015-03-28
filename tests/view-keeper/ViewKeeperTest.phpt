@@ -49,18 +49,9 @@ class ViewKeeperTest extends Tester\TestCase
 		Assert::match($this->keeper->getView($this->name, 'layouts', 'layout'), 'test/' . '@layout.latte');
 	}
 
-	function testGetViewMagic()
-	{
-		Assert::match($this->keeper->getControlView($this->name), 'test/controls/' . $this->name . '/default.latte');
-		Assert::match($this->keeper->getControlView($this->name, 'test'), 'test/controls/' . $this->name . '/test.latte');
-		Assert::match($this->keeper->getControlView($this->name, 'test', 'foo'), 'test/controls/' . $this->name . '/test.foo');
-		Assert::match($this->keeper->getControlView($this->name, 'test', '.foo'), 'test/controls/' . $this->name . '/test.foo');
-	}
-
 	function testCaseInsensitive()
 	{
 		Assert::match($this->keeper->getView($this->name, 'CaseInSensitives'), 'test/caseinsensitives/' . $this->name . '/default.latte');
-		Assert::match($this->keeper->getCaseInSensitiveView($this->name), 'test/caseinsensitives/' . $this->name . '/default.latte');
 	}
 
 	function testModule()

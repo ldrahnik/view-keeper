@@ -73,13 +73,6 @@ Example of usage, view-keeper is immune to crash in ajax request (no parameters 
 	}
 ```
 
-Or you can use get view via magic
-
-```php
-	$this->keeper->getControlView($this->name);
-	//will find mask name in config which is plural of 'Control' & case insensivite => 'controls'
-```
-
 Is able to set up path via these patterns
 
 ```sh
