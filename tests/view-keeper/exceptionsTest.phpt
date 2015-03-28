@@ -47,15 +47,6 @@ class exceptionsTest extends Tester\TestCase
 			$this->keeper->getView('', 'bar');
 		}, 'ViewKeeper\InvalidParameter');
 	}
-
-
-	function testFileNotExist()
-	{
-		Assert::exception(function() {
-			$this->keeper->setFileCheck()
-						->getView('test', 'presenters');
-		}, 'ViewKeeper\FileNotFound');
-	}
 }
 
 $test = new exceptionsTest($container);

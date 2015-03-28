@@ -14,15 +14,6 @@ interface Exception
 }
 
 /**
- * Class FileNotFound
- * @package ldrahnik\ViewKeeper
- */
-class FileNotFound extends \LogicException
-{
-
-}
-
-/**
  * Class ViewCategoryNotFound
  * @package ldrahnik\ViewKeeper
  */

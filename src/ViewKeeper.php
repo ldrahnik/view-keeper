@@ -19,16 +19,6 @@ class ViewKeeper
 	public $categories = array();
 
 	/**
-	 * @var bool
-	 */
-	private $fileCheck = false;
-
-	/**
-	 * @var bool
-	 */
-	private $lastFileCheck = false;
-
-	/**
 	 * @param $categories
 	 */
 	public function __construct($categories)
@@ -80,12 +70,6 @@ class ViewKeeper
 		$path = $this->parseViewMask($this->categories[$category], $name, $category, $view);
 		if($suffix != null) {
 			$path = $path . '.' . $suffix;
-		}
-		if($this->fileCheck == true && !file_exists($path)) {
-			throw new FileNotFound("File '{$path}' not found.");
-		}
-		if($this->lastFileCheck == true) {
-			$this->fileCheck = false;
 		}
 		return $path;
 	}
@@ -181,61 +165,5 @@ class ViewKeeper
 		}
 
 		throw MemberAccessException::undefinedMethodCall($this, $name);
-	}
-
-	/**
-	 * Setter of $fileCheck
-	 *
-	 * @param bool $state
-	 *
-	 * @return $this
-	 */
-	public function setFileCheck($state = true)
-	{
-		if($state) {
-			$this->fileCheck = true;
-		} else {
-			$this->fileCheck = false;
-			$this->lastFileCheck = false;
-		}
-		return $this;
-	}
-
-	/**
-	 * Getter of $fileCheck
-	 *
-	 * @return bool
-	 */
-	public function getFileCheck()
-	{
-		return $this->fileCheck;
-	}
-
-	/**
-	 * Setter of $lastFileCheck
-	 *
-	 * @param bool $state
-	 *
-	 * @return $this
-	 */
-	public function setLastFileCheck($state = true)
-	{
-		if($state) {
-			$this->fileCheck = true;
-			$this->lastFileCheck = true;
-		} else {
-			$this->lastFileCheck = false;
-		}
-		return $this;
-	}
-
-	/**
-	 * Getter of $lastFileCheck
-	 *
-	 * @return bool
-	 */
-	public function getLastFileCheck()
-	{
-		return $this->lastFileCheck;
 	}
 }

@@ -79,18 +79,6 @@ class ViewKeeperTest extends Tester\TestCase
 	{
 		Assert::match($this->keeper->getView($this->nameWithModule, 'presenterWithModule', NULL, NULL), 'test/BackendModule/presenters/Homepage/');
 	}
-
-	function testFileCheck()
-	{
-		$this->keeper->setFileCheck();
-		Assert::same($this->keeper->getFileCheck(), true);
-		$this->keeper->setLastFileCheck();
-		Assert::same($this->keeper->getFileCheck(), true);
-		Assert::same($this->keeper->getLastFileCheck(), true);
-		$this->keeper->setFileCheck(false);
-		Assert::same($this->keeper->getFileCheck(), false);
-		Assert::same($this->keeper->getLastFileCheck(), false);
-	}
 }
 
 $test = new ViewKeeperTest($container);

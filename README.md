@@ -80,12 +80,6 @@ Or you can use get view via magic
 	//will find category in config which is plural of 'Control' & case insensivite => 'controls'
 ```
 
-Check if file exists is settable via property, default is disable but you can enable that for instance of view-keeper. That feature do debugging more easy
-
-```php
-	$this->keeper->setFileCheck()->getView($this->name, 'controls');
-```
-
 Is able to set up path via these patterns
 
 ```sh
