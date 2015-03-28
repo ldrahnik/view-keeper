@@ -14,10 +14,8 @@ use ViewKeeper\Utils\Strings;
 class ViewKeeper
 {
 
-	/**
-	 * @var array
-	 */
-	public $masks = array();
+	/** @var array */
+	private $masks = array();
 
 	/**
 	 * @param $masks
