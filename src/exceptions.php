@@ -17,7 +17,7 @@ interface Exception
  * Class ViewCategoryNotFound
  * @package ldrahnik\ViewKeeper
  */
-class ViewCategoryNotFound extends \LogicException
+class ViewMaskNotFound extends \LogicException
 {
 
 }

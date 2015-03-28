@@ -35,8 +35,8 @@ extensions:
 	keeper: ViewKeeper\DI\ViewKeeperHelperExtension
 
 keeper:
-	controls: %themeDir%/<category>/<name>/<view>
-	presenters: %themeDir%/<category>/<name>/<view>
+	controls: %themeDir%/controls/<name>/<view>
+	presenters: %themeDir%/presenters/<name>/<view>
 	layouts: %themeDir%/@<view>
 ```
 
@@ -77,7 +77,7 @@ Or you can use get view via magic
 
 ```php
 	$this->keeper->getControlView($this->name);
-	//will find category in config which is plural of 'Control' & case insensivite => 'controls'
+	//will find mask name in config which is plural of 'Control' & case insensivite => 'controls'
 ```
 
 Is able to set up path via these patterns
@@ -87,7 +87,6 @@ Is able to set up path via these patterns
 	<name>			# <Backend>Module<:Base>Presenter
 					# <Base>Presenter
 					# <UserAdd>
-	<category> 		# <controls>: ...
 	<view> 			# <default>.latte
 	
 	# suffix is not configurable, always will be in the end over dot

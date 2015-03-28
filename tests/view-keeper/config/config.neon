@@ -5,8 +5,8 @@ extensions:
 	keeper: ViewKeeper\DI\ViewKeeperHelperExtension
 
 keeper:
-	controls: %themeDir%/<category>/<name>/<view>
-	presenters: %themeDir%/<category>/<name>/<view>
-	layouts: %themeDir%/@<view>
-	caseInseNsitiveS: %themeDir%/<category>/<name>/<view>
-	presenterWithModule: %themeDir%/<module>Module/presenters/<name>/<view>
+	controls: '%themeDir%/controls/<name>/<view>'
+	presenters: '%themeDir%/presenters/<name>/<view>'
+	layouts: '%themeDir%/@<view>'
+	caseInseNsitiveS: '%themeDir%/caseinsensitives/<name>/<view>'
+	presenterWithModule: '%themeDir%/<module>Module/presenters/<name>/<view>'

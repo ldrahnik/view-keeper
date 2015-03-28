@@ -17,15 +17,15 @@ class ViewKeeper
 	/**
 	 * @var array
 	 */
-	public $categories = array();
+	public $masks = array();
 
 	/**
-	 * @param $categories
+	 * @param $masks
 	 */
-	public function __construct($categories)
+	public function __construct($masks)
 	{
-		foreach($categories as $id => $value) {
-			$this->categories[strtolower($id)] = $value;
+		foreach($masks as $id => $value) {
+			$this->masks[strtolower($id)] = $value;
 		}
 	}
 
@@ -33,42 +33,42 @@ class ViewKeeper
 	 * Return view path of control $name.
 	 *
 	 * @param $name
-	 * @param $category
+	 * @param $mask
 	 * @param string $view
 	 * @param string $suffix
 	 *
 	 * @throw InvalidParameter
-	 * @throw ViewCategoryNotFound
+	 * @throw ViewMaskNotFound
 	 * @return string
 	 */
-	public function getView($name, $category, $view = 'default', $suffix = 'latte')
+	public function getView($name, $mask, $view = 'default', $suffix = 'latte')
 	{
-		if ($category === '') throw new ViewCategoryNotFound("Category '{$name}' not found.");
+		if ($mask === '') throw new ViewMaskNotFound("Category '{$name}' not found.");
 		if ($name === '') throw new InvalidParameter("Invalid parameter name '{$name}'.");
 		if ($suffix === '')	throw new InvalidParameter("Invalid parameter suffix '{$suffix}'.");
 
-		$category = strtolower($category);
-		if(isset($this->categories[$category])) {
-			return $this->getViewByCategory($name, $category, $view, $suffix);
+		$mask = strtolower($mask);
+		if(isset($this->masks[$mask])) {
+			return $this->getViewByCategory($name, $mask, $view, $suffix);
 		}
 
-		throw new ViewCategoryNotFound("Category '{$category}' not found.");
+		throw new ViewMaskNotFound("Mask '{$mask}' not found.");
 	}
 
 	/**
 	 * Return template $path from mask with forwarded values.
 	 *
 	 * @param $name
-	 * @param $category
+	 * @param $mask
 	 * @param string $view
 	 * @param string $suffix
 	 *
 	 * @throw FileNotFound
 	 * @return string
 	 */
-	private function getViewByCategory($name, $category, $view = 'default', $suffix = 'latte')
+	private function getViewByCategory($name, $mask, $view = 'default', $suffix = 'latte')
 	{
-		$path = $this->parseViewMask($this->categories[$category], $name, $category, $view);
+		$path = $this->parseViewMask($this->masks[$mask], $name, $view);
 		if($suffix != null) {
 			$path = $path . '.' . $suffix;
 		}
@@ -80,18 +80,16 @@ class ViewKeeper
 	 *
 	 * @param $mask
 	 * @param $name
-	 * @param $category
 	 * @param $view
 	 *
 	 * @return string
 	 */
-	private function parseViewMask($mask, $name, $category, $view)
+	private function parseViewMask($mask, $name, $view)
 	{
 		return Parser::replace(
 			[
 				'<module>' => Strings::strbefore($name, ':'),
 				'<name>' => Strings::strafter($name, ':'),
-				'<category>' => $category,
 				'<view>' => $view
 			],
 			$mask);
@@ -99,7 +97,7 @@ class ViewKeeper
 
 	/**
 	 * Allows the user to access through magic methods to protected and public properties.
-	 * There is get<view category>('name') for every view.
+	 * There is get<view mask name>('name') for every view.
 	 *
 	 * @param string $name method name
 	 * @param array $args arguments
@@ -115,7 +113,7 @@ class ViewKeeper
 			$prop = substr($name, 3);
 			$prop = strtolower(str_replace("View", "", $prop)) . 's';
 
-			if ($op === 'get' && isset($this->categories[$prop]) & !empty($args)) {
+			if ($op === 'get' && isset($this->masks[$prop]) & !empty($args)) {
 				if(count($args) == 1) {
 					return $this->getViewByCategory($args[0], $prop);
 				} else if(count($args) == 2) {
