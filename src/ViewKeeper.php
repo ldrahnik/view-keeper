@@ -89,7 +89,7 @@ class ViewKeeper
 		return Parser::replace(
 			[
 				'<module>' => Strings::strbefore($name, ':'),
-				'<name>' => Strings::strafter($name, ':'),
+				'<name>' => Strings::strafter($name, ':', $name),
 				'<view>' => $view
 			],
 			$mask);

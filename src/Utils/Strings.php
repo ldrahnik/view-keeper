@@ -11,33 +11,35 @@ namespace ViewKeeper\Utils;
 class Strings {
 
 	/**
-	 * Take part of $string after $substring or $string.
+	 * Take part of $string after $substring or $return.
 	 *
 	 * @param $string
 	 * @param $substring
+	 * @param $return
 	 * @return string
 	 */
-	public static function strafter($string, $substring)
+	public static function strafter($string, $substring, $return = null)
 	{
 		$pos = strpos($string, $substring);
 		if ($pos === false)
-			return $string;
+			return $return;
 		else
 			return(substr($string, $pos+strlen($substring)));
 	}
 
 	/**
-	 * Take part of $string before $substring or ''.
+	 * Take part of $string before $substring or $return.
 	 *
 	 * @param $string
 	 * @param $substring
+	 * @param $return
 	 * @return string
 	 */
-	public static function strbefore($string, $substring)
+	public static function strbefore($string, $substring, $return = null)
 	{
 		$pos = strpos($string, $substring);
 		if ($pos === false)
-			return '';
+			return $return;
 		else
 			return (substr($string, 0, $pos));
 	}
