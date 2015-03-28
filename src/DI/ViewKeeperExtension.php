@@ -5,12 +5,12 @@ namespace ViewKeeper\DI;
 use Nette\DI\CompilerExtension;
 
 /**
- * Class ViewKeeperHelperExtension
+ * Class ViewKeeperExtension
  *
  * @author Lukáš Drahník (http://drahnik-lukas.com/)
  * @package ldrahnik\ViewKeeper\DI
  */
-class ViewKeeperHelperExtension extends CompilerExtension
+class ViewKeeperExtension extends CompilerExtension
 {
 
 	public function loadConfiguration()
