@@ -2,7 +2,7 @@
 
 namespace ViewKeeper;
 
-use ViewKeeper\Parser\Parser;
+use UrlMatcher;
 use ViewKeeper\Utils\Strings;
 
 /**
@@ -64,14 +64,15 @@ class ViewKeeper
 			throw new ViewMaskNotFound("Mask '{$mask}' not found.");
 		}
 
-		$path =  Parser::replace(
+		$matcher = new UrlMatcher\Matcher(
 			$this->masks[$mask],
 			[
-				'<module>' => Strings::strbefore($name, ':'),
-				'<name>' => Strings::strafter($name, ':', $name),
-				'<view>' => $view
+				'module' => Strings::strbefore($name, ':'),
+				'name' => Strings::strafter($name, ':', $name),
+				'view' => $view
 			]
 		);
+		$path = $matcher->parse();
 
 		if($suffix != null) {
 			$path = $path . '.' . $suffix;
