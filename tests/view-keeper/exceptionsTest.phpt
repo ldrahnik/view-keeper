@@ -33,7 +33,7 @@ class exceptionsTest extends Tester\TestCase
 		$this->keeper = $this->container->getService('keeper.ViewKeeper');
 	}
 
-	function testRegularViewCategoryNotFound()
+	function testRegularViewMaskNotFound()
 	{
 		Assert::exception(function() {
 			$this->keeper->getView('foo', 'bar');

@@ -9,7 +9,7 @@ use	Tester\Assert;
 require __DIR__ . '/../bootstrap.php';
 
 /**
- * Class ViewKeeperTest
+ * Class StringsTest
  *
  * @author Lukáš Drahník (http://drahnik-lukas.com/)
  * @package ldrahnik\ViewKeeper\Tests
