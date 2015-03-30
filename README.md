@@ -12,6 +12,7 @@ Requirements
 ldrahnik/view-keeper requires PHP 5.4 or higher.
 
 - [Nette Framework](https://github.com/nette/nette)
+- [url-matcher](https://github.com/ldrahnik/url-matcher)
 
 Installation
 ------------
@@ -91,7 +92,11 @@ Benefits
 - View-keeper is easy way to separate template files from logic
 - Change position of files is now easier than ever before
 
+Summary
+-------
 View keeper tries to be ultra-light package and simple to use. You will love it :)
+
+For more information about path enrolment please check [url-matcher](https://github.com/ldrahnik/url-matcher)
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ldrahnik/view-keeper/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
