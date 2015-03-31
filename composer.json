@@ -16,11 +16,10 @@
         "email": "l.drahnik@gmail.com",
         "issues": "https://github.com/ldrahnik/view-keeper/issues"
     },
-    "minimum-stability": "dev",
     "require": {
         "php": ">= 5.4",
         "nette/nette": "~2.2.0",
-        "ldrahnik/url-matcher": "@dev"
+        "ldrahnik/url-matcher": "~1.0"
     },
     "autoload": {
         "psr-4": {
