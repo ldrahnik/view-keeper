@@ -41,7 +41,6 @@ class ViewKeeper
 	{
 		if ($mask === '') throw new ViewMaskNotFound("Category '{$name}' not found.");
 		if ($name === '') throw new InvalidParameter("Invalid parameter name '{$name}'.");
-		if ($suffix === '')	throw new InvalidParameter("Invalid parameter suffix '{$suffix}'.");
 
 		return $this->parseMask($mask, $name, $view, $suffix);
 	}
@@ -57,7 +56,7 @@ class ViewKeeper
 	 * @throw FileNotFound
 	 * @return string
 	 */
-	private function parseMask($mask, $name, $view = 'default', $suffix = 'latte')
+	private function parseMask($mask, $name, $view, $suffix)
 	{
 		$mask = strtolower($mask);
 		if(!isset($this->masks[$mask])) {
@@ -74,7 +73,7 @@ class ViewKeeper
 		);
 		$path = $matcher->parse();
 
-		if($suffix != null) {
+		if($suffix === '' || $suffix != null) {
 			$path = $path . '.' . $suffix;
 		}
 		return $path;
