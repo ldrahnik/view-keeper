@@ -15,7 +15,7 @@ class ViewKeeper
 {
 
 	/** @var array */
-	private $masks = array();
+	private $masks = [];
 
 	/**
 	 * @param $masks
