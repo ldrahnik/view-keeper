@@ -43,35 +43,35 @@ class ViewKeeperTest extends Tester\TestCase
 
 	function testGetView()
 	{
-		Assert::match($this->keeper->getView($this->name, 'controls'), 'test/controls/' . $this->name . '/default.latte');
-		Assert::match($this->keeper->getView($this->name, 'presenters'), 'test/presenters/' . $this->name . '/default.latte');
-		Assert::match($this->keeper->getView($this->name, 'layouts', 'layout'), 'test/' . '@layout.latte');
+		Assert::match('test/controls/' . $this->name . '/default.latte', $this->keeper->getView($this->name, 'controls'));
+		Assert::match('test/presenters/' . $this->name . '/default.latte', $this->keeper->getView($this->name, 'presenters'));
+		Assert::match('test/@layout.latte', $this->keeper->getView($this->name, 'layouts', 'layout'));
 	}
 
 	function testCaseInsensitive()
 	{
-		Assert::match($this->keeper->getView($this->name, 'CaseInSensitives'), 'test/caseinsensitives/' . $this->name . '/default.latte');
+		Assert::match('test/caseinsensitives/' . $this->name . '/default.latte', $this->keeper->getView($this->name, 'CaseInSensitives'));
 	}
 
 	function testModule()
 	{
-		Assert::match($this->keeper->getView($this->nameWithModule, 'presenterWithModule'), 'test/BackendModule/presenters/Homepage/default.latte');
-		Assert::match($this->keeper->getView(':Test', 'presenterWithModule'), 'test/Module/presenters/Test/default.latte');
-		Assert::match($this->keeper->getView('Ahoj:', 'presenterWithModule'), 'test/AhojModule/presenters//default.latte');
+		Assert::match('test/BackendModule/presenters/Homepage/default.latte', $this->keeper->getView($this->nameWithModule, 'presenterWithModule'));
+		Assert::match('test/Module/presenters/Test/default.latte',$this->keeper->getView(':Test', 'presenterWithModule'));
+		Assert::match('test/AhojModule/presenters//default.latte', $this->keeper->getView('Ahoj:', 'presenterWithModule'));
 	}
 
 	function testNullSuffix()
 	{
-		Assert::match($this->keeper->getView($this->nameWithModule, 'presenterWithModule', 'default', NULL), 'test/BackendModule/presenters/Homepage/default');
+		Assert::match('test/BackendModule/presenters/Homepage/default', $this->keeper->getView($this->nameWithModule, 'presenterWithModule', 'default', NULL));
 	}
 
 	function testNullSuffix2()
 	{
-		Assert::match($this->keeper->getView($this->nameWithModule, 'presenterWithModule', 'default', ''), 'test/BackendModule/presenters/Homepage/default.');
+		Assert::match('test/BackendModule/presenters/Homepage/default.', $this->keeper->getView($this->nameWithModule, 'presenterWithModule', 'default', ''));
 	}
 	function testNullAction()
 	{
-		Assert::match($this->keeper->getView($this->nameWithModule, 'presenterWithModule', NULL, NULL), 'test/BackendModule/presenters/Homepage/');
+		Assert::match('test/BackendModule/presenters/Homepage/',$this->keeper->getView($this->nameWithModule, 'presenterWithModule', NULL, NULL));
 	}
 }
 
