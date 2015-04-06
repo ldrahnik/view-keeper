@@ -33,7 +33,7 @@ parameters:
 	themeDir: %appDir%/templates
 
 extensions:
-	keeper: ViewKeeper\DI\ViewKeeperHelperExtension
+	keeper: ViewKeeper\DI\ViewKeeperExtension
 
 keeper:
 	controls: %themeDir%/controls/<name>/<view>
