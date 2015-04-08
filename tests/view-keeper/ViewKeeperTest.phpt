@@ -73,6 +73,11 @@ class ViewKeeperTest extends Tester\TestCase
 	{
 		Assert::match('test/BackendModule/presenters/Homepage/',$this->keeper->getView($this->nameWithModule, 'presenterWithModule', NULL, NULL));
 	}
+
+	function testGetMask()
+	{
+		Assert::match('test/controls/<name>/<view>', $this->keeper->getMask('controls'));
+	}
 }
 
 $test = new ViewKeeperTest($container);

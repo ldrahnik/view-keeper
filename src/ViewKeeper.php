@@ -26,6 +26,24 @@ class ViewKeeper
 	}
 
 	/**
+	 * @param $mask
+	 *
+	 * @throw ViewMaskNotFound
+	 */
+	public function getMask($mask)
+	{
+		if ($mask === '') {
+			throw new ViewMaskNotFound("Mask '{$mask}' not found.");
+		}
+
+		$mask = strtolower($mask);
+		if(!isset($this->masks[$mask])) {
+			throw new ViewMaskNotFound("Mask '{$mask}' not found.");
+		}
+		return $this->masks[$mask];
+	}
+
+	/**
 	 * Return view path of control $name.
 	 *
 	 * @param $name
