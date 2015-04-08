@@ -57,7 +57,7 @@ class ViewKeeper
 	 */
 	public function getView($name, $mask, $view = 'default', $suffix = 'latte')
 	{
-		if ($mask === '') throw new ViewMaskNotFound("Category '{$name}' not found.");
+		if ($mask === '') throw new ViewMaskNotFound("Mask '{$mask}' not found.");
 		if ($name === '') throw new InvalidParameter("Invalid parameter name '{$name}'.");
 
 		return $this->parseMask($mask, $name, $view, $suffix);
