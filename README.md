@@ -29,49 +29,12 @@ Usage
 Register extension in config file
 
 ```sh
-parameters:
-	themeDir: %appDir%/templates
-
 extensions:
 	keeper: ViewKeeper\DI\ViewKeeperExtension
 
 keeper:
-	controls: %themeDir%/controls/<name>/<view>
-	presenters: %themeDir%/presenters/<name>/<view>
-	layouts: %themeDir%/@<view>
-```
-
-Example of usage, view-keeper is immune to crash in ajax request (no parameters in render method)
-
-```php
-	/**
-	* @var \ViewKeeper\ViewKeeper 
-	* @inject 
-	*/
-	private $keeper;
-	
-	public function __construct(ViewKeeper\ViewKeeper $keeper)
-    {
-		$this->keeper = $keeper;
-    }
-    
-    // components
-    public function render()
-    {
-		$this->template->setFile($this->keeper->getView($this->name, 'controls'));
-		$this->template->render();
-    }
-    	
-    // presenters
-    public function formatLayoutTemplateFiles()
-	{
-		return array($this->keeper->getView($this->name, 'layouts', 'layout'));
-	}
-
-	public function formatTemplateFiles()
-	{
-		return array($this->keeper->getView($this->name, 'presenters', $this->action));
-	}
+	controls: foo/controls/<name>/<view>
+	files: foo/<name>/<view>
 ```
 
 Is able to set up path via these patterns
@@ -82,14 +45,21 @@ Is able to set up path via these patterns
 					# <Base>Presenter
 					# <UserAdd>
 	<view> 			# <default>.latte
-	
-	# suffix is not configurable, always will be in the end over dot
+```
+
+Suffix is not configurable (still you can change that as param of `getView` method) - always will be in the end over dot
+
+And inject
+
+```php
+	/** @var \ViewKeeper\ViewKeeper @inject */
+	private $keeper;
 ```
 
 Benefits
 -------
 
-- View-keeper is easy way to separate template files from logic
+- View-keeper is easy way to separate files from logic
 - Change position of files is now easier than ever before
 
 Summary
