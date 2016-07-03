@@ -6,6 +6,12 @@ ldrahnik/view-keeper
 
 Keeper of app views.
 
+Benefits
+-------
+
+- View-keeper is easy way to separate files from logic (e.g. separate to repositories, it has benefits, rights etc.)
+- Change location of files is now easier than ever before
+
 Requirements
 ------------
 
@@ -56,17 +62,8 @@ And inject
 	private $keeper;
 ```
 
-Benefits
--------
-
-- View-keeper is easy way to separate files from logic
-- Change position of files is now easier than ever before
-
 Summary
 -------
 View keeper tries to be ultra-light package and simple to use. You will love it :)
 
 For more information about path enrolment please check [url-matcher](https://github.com/ldrahnik/url-matcher)
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ldrahnik/view-keeper/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
