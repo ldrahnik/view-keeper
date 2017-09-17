@@ -15,7 +15,8 @@ Benefits
 Reference
 -------
 
-[Anee - track manager for sharing tracks and photos](https://github.com/anee/anee)
+- [Anee - track manager for sharing tracks and photos](https://github.com/anee/anee)
+- [TodoMVC - example nette project](https://github.com/ldrahnik/nette-todomvc)
 
 
 Requirements
