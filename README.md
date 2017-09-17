@@ -12,6 +12,12 @@ Benefits
 - View-keeper is easy way to separate files from logic (e.g. separate to repositories, it has benefits, rights etc.)
 - Change location of files is now easier than ever before
 
+Reference
+-------
+
+[Anee - track manager for sharing tracks and photos](https://github.com/anee/anee)
+
+
 Requirements
 ------------
 
