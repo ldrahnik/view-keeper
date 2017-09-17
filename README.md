@@ -3,6 +3,7 @@ ldrahnik/view-keeper
 
 [![Build Status](https://travis-ci.org/ldrahnik/view-keeper.svg)](https://travis-ci.org/ldrahnik/view-keeper)
 [![Latest stable](https://img.shields.io/packagist/v/ldrahnik/view-keeper.svg)](https://packagist.org/packages/ldrahnik/view-keeper)
+[![Downloads total](https://img.shields.io/packagist/dt/ldrahnik/view-keeper.svg?style=flat-square)](https://packagist.org/packages/ldrahnik/view-keeper)
 
 Keeper of app views.
 
